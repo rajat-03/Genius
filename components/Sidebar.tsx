@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   MessageSquare,
   Music,
-  Settings,
   VideoIcon,
 } from "lucide-react";
 import { Montserrat } from "next/font/google";
@@ -53,11 +52,6 @@ const routes = [
     icon: Code,
     href: "/code",
     color: "text-green-700",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/settings",
   },
 ];
 
