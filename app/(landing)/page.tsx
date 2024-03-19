@@ -6,7 +6,7 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      This is landing page (unprotected)
+      This is landing page of the Genius AI (unprotected)
       <div>
         <Link href="/sign-in">
           <Button>Log in</Button>
