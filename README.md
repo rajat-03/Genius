@@ -1,4 +1,3 @@
-
 # Genius: A SaaS AI Platform
 
 Genious is a SaaS AI Platform built using Next.js 14, React, and Tailwind CSS. It provides various AI-powered tools for generating images, videos, conversations, music, and code based on user prompts.
@@ -19,15 +18,20 @@ Genious is a SaaS AI Platform built using Next.js 14, React, and Tailwind CSS. I
 - **Clerk Authentication**: Supports authentication via email and Google accounts using Clerk Authentication.
 - **Client Form Validation**: Implements client-side form validation using react-hook-form and zod for improved data integrity.
 - **Server Error Handling**: Provides robust server error handling using react-toast to notify users of any issues.
+
 ## Technologies Used
 
 - Next.js 14
 - React
+- TypeScript
 - Tailwind CSS
 - OpenAI
 - Replicate AI
+- Clerk
+- shadcn/ui
 
 ## Environment Setup
+
 Before executing the project, ensure to create a `.env` file with the following environment variables:
 
 ```plaintext
@@ -42,11 +46,13 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 OPENAI_API_KEY=''
 REPLICATE_API_TOKEN=''
 ```
+
 ## Installation
 
 1. Clone the repository.
 2. Navigate to the project directory.
 3. Install dependencies using `npm install` or `yarn install`.
+
 ## Usage
 
 1. Set up the environment variables in the `.env` file.
