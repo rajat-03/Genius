@@ -1,6 +1,6 @@
 # Genius: A SaaS AI Platform
 
-Genious is a SaaS AI Platform built using Next.js 14, React, and Tailwind CSS. It provides various AI-powered tools for generating images, videos, conversations, music, and code based on user prompts.
+Genius is a SaaS AI Platform built using Next.js 14, React, and Tailwind CSS. It provides various AI-powered tools for generating images, videos, conversations, music, and code based on user prompts.
 
 ## Features
 
