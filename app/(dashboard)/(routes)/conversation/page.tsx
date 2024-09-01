@@ -89,7 +89,7 @@ const ConversationPage = () => {
                 className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
               >
-                Generate
+                Send
               </Button>
             </form>
           </Form>
@@ -117,7 +117,7 @@ const ConversationPage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">{message.content}</p>
+                <span className="whitespace-pre-line">{message.content}</span>
               </div>
             ))}
           </div>

@@ -2,8 +2,8 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Code } from "lucide-react";
+import { useState } from "react";
+import { Code, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,12 +19,11 @@ import BotAvatar from "@/components/BotAvatar";
 import Loader from "@/components/Loader";
 import Markdown from "react-markdown";
 import { Textarea } from "@/components/ui/textarea";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 const CodePage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
-  const [isCopied, setIsCopied] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,16 +55,6 @@ const CodePage = () => {
       router.refresh();
     }
   };
-
-  useEffect(() => {
-    let timeout:any;
-    if (isCopied) {
-        timeout = setTimeout(() => {
-            setIsCopied(false);
-        }, 3000);  // 3 seconds delay
-    }
-    return () => clearTimeout(timeout);
-}, [isCopied]);
 
   return (
     <div>
@@ -99,18 +88,8 @@ const CodePage = () => {
                   <Markdown
                     components={{
                       pre: ({ node, ...props }) => (
-                        <div className="relative overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                        <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
                           <pre {...props} />
-                          <CopyToClipboard
-                            text={props.children ? props.children.toString() : ''}  // Change to this
-                            onCopy={() => {
-                              console.log("Copied");
-                              setIsCopied(true);
-                            }}>
-                            <button className='absolute right-1 top-1'>
-                              {isCopied ? 'Copied' : 'Copy'}
-                            </button>
-                          </CopyToClipboard>
                         </div>
                       ),
                       code: ({ node, ...props }) => (
@@ -140,16 +119,17 @@ const CodePage = () => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="rounded-lg border w-full p-4 px-3 my-4 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 items-center"
+              className="rounded-lg border w-full p-4 px-3 my-4 focus-within:shadow-sm grid grid-cols-12 gap-2 items-end"
             >
               <FormField
                 name="prompt"
                 render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
+                  <FormItem className="col-span-11">
                     <FormControl className="m-0 p-0">
                       <Textarea
                         className="resize-none overflow-hidden border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
+                        rows={1}
                         placeholder="Simple toggle button using react hooks."
                         {...field}
                       />
@@ -158,10 +138,10 @@ const CodePage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-1 w-full p-2"
                 disabled={isLoading}
               >
-                Generate
+                <Send />
               </Button>
             </form>
           </Form>
