@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         }
 
         const chatCompletion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model:`${process.env.OPENAI_MODEL}`,
             messages
         });
 
